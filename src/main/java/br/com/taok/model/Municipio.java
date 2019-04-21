@@ -20,7 +20,13 @@ public class Municipio {
 	
 	private String uf;
 	
+	public Implementacao getImplementacao() {
+
+		return Implementacao.obterImplementacaoPorId(id);
+	}
+	
 	public Integer getId() {
+		
 		return id;
 	}
 	public void setId(Integer id) {
