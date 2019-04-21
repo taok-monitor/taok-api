@@ -12,9 +12,9 @@ public class ImportadorCeFortaleza implements Importador {
 	public Integer importa() {
 		String url = URL_DEFAULT.replace(":datainicial", "01012019").replace(":datafinal", "31012019");
 		
-		List<String[]> conecta = ConectorAPI.conecta(url);
+		List<String[]> dados = ConectorAPI.conecta(url);
 		
-		return conecta.size();
+		return dados.size();
 	}
 	
 }

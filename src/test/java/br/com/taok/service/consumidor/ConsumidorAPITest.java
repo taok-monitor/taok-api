@@ -15,7 +15,7 @@ public class ConsumidorAPITest {
 		fortaleza.setDescricao("Prefeitura de Fortaleza");
 		fortaleza.setUf("CE");
 		
-		Integer importa = fortaleza.getImplementacao().importa();
+		Integer importa = fortaleza.carregaDados();
 		
 		Assert.assertTrue(importa > 0);
 	}

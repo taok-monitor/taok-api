@@ -1,14 +1,20 @@
 package br.com.taok.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-@Entity(name="municipio")
-public class Municipio {
+@Entity
+@Table(name="municipio")
+public class Municipio implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "municipio_id_seq")
@@ -20,9 +26,9 @@ public class Municipio {
 	
 	private String uf;
 	
-	public Implementacao getImplementacao() {
+	public Integer carregaDados() {
 
-		return Implementacao.obterImplementacaoPorId(id);
+		return Implementacao.obterImplementacaoPorId(id).importa();
 	}
 	
 	public Integer getId() {

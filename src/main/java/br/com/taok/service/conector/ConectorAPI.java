@@ -9,14 +9,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- * Classe responsável por conectar em uma api atraves de uma URL e rotornar um array de String, 
- * essa api tem com premissa que retornar CSV separado por virgula
- * 
- * */
 public class ConectorAPI {
 
+	/**
+	 * 
+	 * Classe responsável por conectar em uma api atraves de uma URL e rotornar um array de String, 
+	 * essa api tem com premissa que retornar CSV separado por virgula
+	 * 
+	 * */
 	public static List<String[]> conecta(String urlApi) {
 		
 		HttpURLConnection connection = null;

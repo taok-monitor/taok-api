@@ -10,7 +10,7 @@ public class ConsumidorAPIDefault implements ConsumidorAPI {
 	@Override
 	public List<Lancamento> consome(Municipio municipio) {
 
-		municipio.getImplementacao().importa();
+		municipio.carregaDados();
 		
 		return null;
 	}
