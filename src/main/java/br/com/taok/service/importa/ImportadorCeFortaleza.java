@@ -14,11 +14,6 @@ public class ImportadorCeFortaleza implements Importador {
 		
 		List<String[]> conecta = ConectorAPI.conecta(url);
 		
-		for (String[] strings : conecta) {
-			
-			System.out.println(strings[0]);
-		}
-		
 		return conecta.size();
 	}
 	

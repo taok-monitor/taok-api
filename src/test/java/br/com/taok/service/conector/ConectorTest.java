@@ -9,7 +9,7 @@ import br.com.taok.service.importa.ImportadorCeFortaleza;
 public class ConectorTest {
 
 	@Test
-	public void deveImportarPelomenosUm() {
+	public void deveImportarPeloMenosUm() {
 		
 		Importador importador = new ImportadorCeFortaleza();
 		Integer importa = importador.importa();

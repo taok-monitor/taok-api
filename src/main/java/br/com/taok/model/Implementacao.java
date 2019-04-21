@@ -21,9 +21,9 @@ public enum Implementacao {
 		return this.id;
 	}
 	
-	public void importa() {
+	public Integer importa() {
 		
-		implementacao.importa();
+		return implementacao.importa();
 	}
 	
 	public static Implementacao obterImplementacaoPorId(Integer id){

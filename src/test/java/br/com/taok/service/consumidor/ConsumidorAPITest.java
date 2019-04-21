@@ -1,16 +1,22 @@
 package br.com.taok.service.consumidor;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import br.com.taok.model.Municipio;
 
 public class ConsumidorAPITest {
 
-	public static void main(String[] args) {
+	@Test
+	public void deveImportarLancamentosDaPrefeituraDeFortaleza() {
 		
 		Municipio fortaleza = new Municipio();
 		fortaleza.setId(1);
 		fortaleza.setDescricao("Prefeitura de Fortaleza");
 		fortaleza.setUf("CE");
 		
-		fortaleza.getImplementacao().importa();
+		Integer importa = fortaleza.getImplementacao().importa();
+		
+		Assert.assertTrue(importa > 0);
 	}
 }
