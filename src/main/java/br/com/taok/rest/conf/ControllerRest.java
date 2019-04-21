@@ -1,4 +1,4 @@
-package com.codless.rest.conf;
+package br.com.taok.rest.conf;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 import javax.enterprise.inject.Stereotype;
 
-import com.codless.exception.ExceptionRest;
+import br.com.taok.exception.ExceptionRest;
 
 @Stereotype
 @Documented

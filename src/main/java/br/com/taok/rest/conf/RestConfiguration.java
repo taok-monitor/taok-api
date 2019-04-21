@@ -1,14 +1,14 @@
-package com.codless.rest.conf;
+package br.com.taok.rest.conf;
 
 import javax.ws.rs.ApplicationPath;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
-@ApplicationPath("/service/")
+@ApplicationPath("/")
 public class RestConfiguration extends ResourceConfig {
 	
     public RestConfiguration() {    
-        packages(false, "com.codless.rest.resources");
+        packages(false, "br.com.taok.rest.resources");
         register(FilterCROS.class);
     }
 }

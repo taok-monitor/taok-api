@@ -1,4 +1,4 @@
-package com.codless.exception;
+package br.com.taok.exception;
 
 import javax.annotation.Priority;
 import javax.interceptor.AroundInvoke;

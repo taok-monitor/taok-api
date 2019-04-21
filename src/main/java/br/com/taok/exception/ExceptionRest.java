@@ -1,4 +1,4 @@
-package com.codless.exception;
+package br.com.taok.exception;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

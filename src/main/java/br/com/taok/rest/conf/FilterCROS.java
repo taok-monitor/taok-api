@@ -1,4 +1,4 @@
-package com.codless.rest.conf;
+package br.com.taok.rest.conf;
 
 import java.io.IOException;
 
