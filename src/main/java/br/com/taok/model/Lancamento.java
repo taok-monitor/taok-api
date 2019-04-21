@@ -21,7 +21,7 @@ public class Lancamento {
 	
 	private Municipio municipio;
 	
-	private String indentificador;
+	private String identificador;
 	private String orgao;
 	private Date data;
 	private BigDecimal valor;
@@ -39,11 +39,11 @@ public class Lancamento {
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
-	public String getIndentificador() {
-		return indentificador;
+	public String getIdentificador() {
+		return identificador;
 	}
-	public void setIndentificador(String indentificador) {
-		this.indentificador = indentificador;
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 	public String getOrgao() {
 		return orgao;
