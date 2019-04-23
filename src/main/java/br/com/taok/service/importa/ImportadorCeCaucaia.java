@@ -5,10 +5,8 @@ import br.com.taok.service.importa.Importador;
 public class ImportadorCeCaucaia implements Importador {
 
 	@Override
-	public Integer importa() {
+	public void importa() {
 		
 		System.out.println("Importou Caucaia");
-		
-		return null;
 	}
 }
