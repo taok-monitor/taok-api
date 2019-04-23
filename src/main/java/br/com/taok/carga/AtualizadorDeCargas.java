@@ -1,6 +1,6 @@
 package br.com.taok.carga;
 
-import br.com.taok.carga.exception.AtualizadorDeCargasException;
+import br.com.taok.exception.carga.AtualizadorDeCargasException;
 
 public interface AtualizadorDeCargas {
 

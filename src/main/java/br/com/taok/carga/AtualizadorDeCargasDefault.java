@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.taok.carga.exception.AtualizadorDeCargasException;
 import br.com.taok.dao.MunicipioDao;
+import br.com.taok.exception.carga.AtualizadorDeCargasException;
 import br.com.taok.model.Municipio;
 
 public class AtualizadorDeCargasDefault implements AtualizadorDeCargas {

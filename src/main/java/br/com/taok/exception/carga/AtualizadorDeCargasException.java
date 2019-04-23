@@ -1,4 +1,4 @@
-package br.com.taok.carga.exception;
+package br.com.taok.exception.carga;
 
 public class AtualizadorDeCargasException extends RuntimeException {
 
