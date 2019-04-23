@@ -77,6 +77,12 @@ public class Lancamento {
 	}
 	
 	@Override
+	public String toString() {
+		return "Lancamento [id=" + id + ", municipio=" + municipio + ", identificador=" + identificador + ", orgao="
+				+ orgao + ", data=" + data + ", valor=" + valor + ", cpfcnpjFavorecido=" + cpfcnpjFavorecido
+				+ ", nomeFavorecido=" + nomeFavorecido + "]";
+	}
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

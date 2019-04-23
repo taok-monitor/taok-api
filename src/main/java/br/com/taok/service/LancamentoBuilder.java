@@ -12,6 +12,11 @@ public class LancamentoBuilder {
 
 	private Lancamento lancamento;
 	
+	/**
+	 * 
+	 * Criar uma nova instancia de {@link Lancamento}
+	 * 
+	 * */
 	public LancamentoBuilder cria() {
 		
 		this.lancamento = new Lancamento();
@@ -72,6 +77,11 @@ public class LancamentoBuilder {
 		return this;
 	}
 	
+	
+	/**
+	 * 
+	 * Retorna a instancia criada no método <b>cria()</b>
+	 * */
 	public Lancamento agora() {
 		
 		return this.lancamento;
