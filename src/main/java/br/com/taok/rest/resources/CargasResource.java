@@ -22,14 +22,7 @@ public class CargasResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response carregar() {        
      
-    	try {
-		
-    		atualizador.atualiza();
-        	return Response.ok( "ok" ).build();
-		} catch (Exception e) {
-			
-			System.err.println(e.getMessage());
-			return Response.ok( e.getMessage() ).build();
-		}
+    	atualizador.atualiza();
+    	return Response.ok( "ok" ).build();
     }
 }

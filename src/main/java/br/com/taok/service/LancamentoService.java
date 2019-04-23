@@ -11,6 +11,8 @@ public class LancamentoService implements Serializable {
 
 	public void salva(List<Lancamento> lancamentos) {
 		
+		
+		
 	}
 	
 }

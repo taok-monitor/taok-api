@@ -16,8 +16,16 @@ public class MunicipioDao implements Serializable {
 	private EntityManager manager;
 	
 	public List<Municipio> obtemTodosOsMunicipios(){
+
 		
 		return manager.createQuery("from Municipio",Municipio.class)
 				.getResultList();
+	}
+	
+	public Municipio obterMunicipioPorId(Integer id){
+		
+		return manager.createQuery("from Municipio m where m.id = :id ",Municipio.class)
+				.setParameter("id", id)
+				.getSingleResult();
 	}
 }

@@ -26,11 +26,6 @@ public class Municipio implements Serializable {
 	
 	private String uf;
 	
-	public Integer carregaDados() {
-
-		return Implementacao.obterImplementacaoPorId(id).importa();
-	}
-	
 	public Integer getId() {
 		
 		return id;

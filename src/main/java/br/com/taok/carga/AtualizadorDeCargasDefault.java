@@ -1,26 +1,24 @@
 package br.com.taok.carga;
 
-import java.util.List;
-
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import br.com.taok.dao.MunicipioDao;
 import br.com.taok.exception.carga.AtualizadorDeCargasException;
-import br.com.taok.model.Municipio;
+import br.com.taok.service.importa.Importador;
 
 public class AtualizadorDeCargasDefault implements AtualizadorDeCargas {
 
 	@Inject
-	private MunicipioDao municipioDao;
+	@Any
+	private Instance<Importador> importadoresLazy;
 	
 	@Override
 	public void atualiza() throws AtualizadorDeCargasException {
-
-		List<Municipio> municipios = municipioDao.obtemTodosOsMunicipios();
 		
-		for (Municipio municipio : municipios) {
+		for (Importador importador : importadoresLazy) {
 
-			municipio.carregaDados();
+			importador.importa();
 		}
 	}
 }
