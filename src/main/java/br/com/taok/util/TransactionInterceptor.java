@@ -9,10 +9,9 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.transaction.Transactional;
 
 @Priority(Interceptor.Priority.APPLICATION)
-@javax.interceptor.Interceptor
+@Interceptor
 @Transactional
 public class TransactionInterceptor implements Serializable {
 

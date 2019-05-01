@@ -4,4 +4,7 @@
   http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
     <alternatives>
     </alternatives>
+    <interceptors>
+	    <class>br.com.taok.util.TransactionInterceptor</class>
+	</interceptors>
 </beans>

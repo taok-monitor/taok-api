@@ -19,13 +19,17 @@ public class Lancamento {
 	@Column(name = "id")
 	private Integer id;
 	
-	private Municipio municipio;
-	
+	@Column(name="id_municipio")
+	private Integer municipio;
 	private String identificador;
 	private String orgao;
 	private Date data;
 	private BigDecimal valor;
+	
+	@Column(name="cpfcnpj_favorecido")
 	private String cpfcnpjFavorecido;
+
+	@Column(name="nome_favorecido")
 	private String nomeFavorecido;
 	public Integer getId() {
 		return id;
@@ -33,10 +37,11 @@ public class Lancamento {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Municipio getMunicipio() {
+	
+	public Integer getMunicipio() {
 		return municipio;
 	}
-	public void setMunicipio(Municipio municipio) {
+	public void setMunicipio(Integer municipio) {
 		this.municipio = municipio;
 	}
 	public String getIdentificador() {

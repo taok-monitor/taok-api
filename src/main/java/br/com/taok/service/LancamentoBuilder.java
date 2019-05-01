@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.com.taok.model.Lancamento;
-import br.com.taok.model.Municipio;
 
 public class LancamentoBuilder {
 
@@ -24,21 +23,21 @@ public class LancamentoBuilder {
 		return this;
 	}
 	
-	public LancamentoBuilder comMunicipio(Municipio municipio) {
+	public LancamentoBuilder comMunicipio(Integer municipio) {
 		
-		this.lancamento.setMunicipio(municipio);
+		this.lancamento.setMunicipio( municipio );
 		return this;
 	}
 	
 	public LancamentoBuilder comIdentificador(String identificador) {
 		
-		this.lancamento.setIdentificador(identificador);
+		this.lancamento.setIdentificador(identificador.replace("\"", ""));
 		return this;
 	}
 	
 	public LancamentoBuilder comOrgao(String orgao) {
 		
-		this.lancamento.setOrgao(orgao);
+		this.lancamento.setOrgao(orgao.replace("\"", ""));
 		return this;
 	}
 	
@@ -67,13 +66,13 @@ public class LancamentoBuilder {
 	
 	public LancamentoBuilder comCpfCnpjDoFavorecido(String cpfcnpj) {
 		
-		this.lancamento.setCpfcnpjFavorecido(cpfcnpj);
+		this.lancamento.setCpfcnpjFavorecido(cpfcnpj.replace("\"", ""));
 		return this;
 	}
 	
 	public LancamentoBuilder comNomeDoFavorecido(String nomeFavorecido) {
 		
-		this.lancamento.setNomeFavorecido(nomeFavorecido);
+		this.lancamento.setNomeFavorecido(nomeFavorecido.replace("\"", ""));
 		return this;
 	}
 	
