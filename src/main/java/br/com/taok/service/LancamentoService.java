@@ -27,7 +27,7 @@ public class LancamentoService implements Serializable {
 		int contador = 0;
 		for(Lancamento lancamento : lancamentos  ) {
 			
-			em.createNativeQuery("insert into public.lancamento(id_municipio, identificador, orgao, data, valor, cpfcnpj_favorecido, nome_favorecido)values( ?,?,?,?,?,?,? )")
+			em.createNativeQuery("insert into public.lancamento(id_municipio, identificador, orgao, data_lancamento, valor, cpfcnpj_favorecido, nome_favorecido)values( ?,?,?,?,?,?,? )")
 			.setParameter(1, lancamento.getMunicipio())
 			.setParameter(2, lancamento.getIdentificador())
 			.setParameter(3, lancamento.getOrgao())
