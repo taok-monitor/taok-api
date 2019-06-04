@@ -1,7 +1,5 @@
 package br.com.taok.service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -16,22 +14,21 @@ public class GraficoService {
 	@Inject
 	private LancamentoDao dao;
 	
-	public List<Grafico> criaGrafico(Date dataInicial, Date dataFinal){
+	private CriadorDeGraficosBarra criador = new CriadorDeGraficosBarra();
+	
+	public List<Grafico> criaGraficoDeConsumo(Date dataInicial, Date dataFinal){
 		
 		List<Object[]> orgaosQueMaisConsumiram = dao.orgaosQueMaisConsumiran(dataInicial, dataFinal);
-		
-		List<String> labels = new ArrayList<>();
-		List<BigDecimal> valores = new ArrayList<>();
-		
-		for( Object[] linha : orgaosQueMaisConsumiram ) {
-			
-			String label = (String) linha[0];
-			BigDecimal valor = (BigDecimal) linha[1];
-			
-			labels.add(label);
-			valores.add(valor);
-		}
+		criador.comDados(orgaosQueMaisConsumiram);
 
-		return  Arrays.asList(new Grafico("Órgãos que mais consumiram", labels, valores)); 	
+		return  Arrays.asList(criador.cria()); 	
+	}
+	
+	public List<Grafico> criaGraficoComTotais(Date dataInicial, Date dataFinal){
+		
+		List<Object[]> dados = dao.totalConsumidoNoPeriodo(dataInicial, dataFinal);
+		criador.comDados(dados);
+		
+		return  Arrays.asList( criador.cria() ); 	
 	}
 }

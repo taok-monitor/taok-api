@@ -39,7 +39,25 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGrafico( Util.asDate(dataInicial), Util.asDate(dataFinal) );
+    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal) );
+    	return Response.ok( graficos ).build();
+    }
+	
+	@Path("/ano/{mesAnoInicial}/{mesAnoFinal}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response processoAnual(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal  ) {        
+    	
+		Integer mesInicial = Integer.parseInt( mesAnoInicial.substring(0,2) );
+		Integer anoInicial = Integer.parseInt( mesAnoInicial.substring(2,6) );
+		
+		Integer mesFinal = Integer.parseInt( mesAnoFinal.substring(0,2) );
+		Integer anoFinal = Integer.parseInt( mesAnoInicial.substring(2,6) );
+		
+		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
+		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
+		
+    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal) );
     	return Response.ok( graficos ).build();
     }
 }
