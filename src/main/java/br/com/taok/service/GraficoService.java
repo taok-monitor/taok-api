@@ -21,7 +21,7 @@ public class GraficoService {
 		
 		List<Object[]> orgaosQueMaisConsumiram = new ArrayList<>();
 		
-		if( orgao == null ) {
+		if( orgao == null || orgao.trim().isEmpty() ) {
 		
 			orgaosQueMaisConsumiram = dao.orgaosQueMaisConsumiran(dataInicial, dataFinal);
 		}else {
@@ -39,7 +39,7 @@ public class GraficoService {
 		
 		List<Object[]> dados = new ArrayList<>();
 		
-		if( orgao == null ) {
+		if( orgao == null || orgao.trim().isEmpty()  ) {
 			
 		
 			dados = dao.totalConsumidoNoPeriodo(dataInicial, dataFinal);
