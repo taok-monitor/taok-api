@@ -50,6 +50,30 @@ public class LancamentoDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
+	public List<Object[]> consumoPorOrgao(Date dataInicial, Date dataFinal, String orgao){
+		
+		return em.createNativeQuery(" select" + 
+									"   public.lancamento.orgao," + 
+									"   sum( public.lancamento.valor )" + 
+									" from" + 
+									"   public.lancamento" + 
+									" where" + 
+									"   cast( public.lancamento.data_lancamento  as date) between :dataInicial and :dataFinal " +
+									"   and public.lancamento.orgao = :orgao " +
+									" group by" + 
+									"   public.lancamento.orgao" + 
+									" order by" + 
+									"   2 desc" + 
+									" limit" + 
+									"   5")
+				.setParameter("dataInicial", dataInicial)
+				.setParameter("dataFinal", dataFinal)
+				.setParameter("orgao", orgao)
+				.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
 	public List<Object[]> totalConsumidoNoPeriodo(Date dataInicial, Date dataFinal){
 		
 		return em.createNativeQuery("	select " + 
@@ -65,6 +89,28 @@ public class LancamentoDao implements Serializable {
 										"  1")
 				.setParameter("dataInicial", dataInicial)
 				.setParameter("dataFinal", dataFinal)
+				.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Object[]> totalConsumidoNoPeriodoPorOrgao(Date dataInicial, Date dataFinal, String orgao){
+		
+		return em.createNativeQuery("	select " + 
+										"  cast( extract( month from public.lancamento.data_lancamento) as int)as mes, " + 
+										"  sum( public.lancamento.valor ) " + 
+										"from " + 
+										"  public.lancamento " + 
+										"where " + 
+										"  public.lancamento.data_lancamento between :dataInicial and :dataFinal " + 
+										"  and public.lancamento.orgao = :orgao " + 
+										"group by " + 
+										"  extract( month from public.lancamento.data_lancamento) " + 
+										"order by" + 
+										"  1")
+				.setParameter("dataInicial", dataInicial)
+				.setParameter("dataFinal", dataFinal)
+				.setParameter("orgao", orgao)
 				.getResultList();
 	}
 	

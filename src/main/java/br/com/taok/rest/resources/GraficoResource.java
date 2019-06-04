@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -28,7 +29,7 @@ public class GraficoResource {
 	@Path("/{mesAnoInicial}/{mesAnoFinal}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response index(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal  ) {        
+    public Response index(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal, @QueryParam("orgao")String orgao ) {        
     	
 		Integer mesInicial = Integer.parseInt( mesAnoInicial.substring(0,2) );
 		Integer anoInicial = Integer.parseInt( mesAnoInicial.substring(2,6) );
@@ -39,14 +40,14 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal) );
+    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal), orgao );
     	return Response.ok( graficos ).build();
     }
 	
 	@Path("/ano/{mesAnoInicial}/{mesAnoFinal}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response processoAnual(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal  ) {        
+    public Response processoAnual(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal,  @QueryParam("orgao")String orgao ) {        
     	
 		Integer mesInicial = Integer.parseInt( mesAnoInicial.substring(0,2) );
 		Integer anoInicial = Integer.parseInt( mesAnoInicial.substring(2,6) );
@@ -57,7 +58,7 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal) );
+    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal), orgao );
     	return Response.ok( graficos ).build();
     }
 }

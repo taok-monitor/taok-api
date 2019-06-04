@@ -1,5 +1,6 @@
 package br.com.taok.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -16,17 +17,37 @@ public class GraficoService {
 	
 	private CriadorDeGraficosBarra criador = new CriadorDeGraficosBarra();
 	
-	public List<Grafico> criaGraficoDeConsumo(Date dataInicial, Date dataFinal){
+	public List<Grafico> criaGraficoDeConsumo(Date dataInicial, Date dataFinal, String orgao){
 		
-		List<Object[]> orgaosQueMaisConsumiram = dao.orgaosQueMaisConsumiran(dataInicial, dataFinal);
+		List<Object[]> orgaosQueMaisConsumiram = new ArrayList<>();
+		
+		if( orgao == null ) {
+		
+			orgaosQueMaisConsumiram = dao.orgaosQueMaisConsumiran(dataInicial, dataFinal);
+		}else {
+			
+			orgaosQueMaisConsumiram = dao.consumoPorOrgao(dataInicial, dataFinal, orgao);
+		}
+		
+		
 		criador.comDados(orgaosQueMaisConsumiram);
 
 		return  Arrays.asList(criador.cria()); 	
 	}
 	
-	public List<Grafico> criaGraficoComTotais(Date dataInicial, Date dataFinal){
+	public List<Grafico> criaGraficoComTotais(Date dataInicial, Date dataFinal, String orgao){
 		
-		List<Object[]> dados = dao.totalConsumidoNoPeriodo(dataInicial, dataFinal);
+		List<Object[]> dados = new ArrayList<>();
+		
+		if( orgao == null ) {
+			
+		
+			dados = dao.totalConsumidoNoPeriodo(dataInicial, dataFinal);
+		}else {
+			
+			dados = dao.totalConsumidoNoPeriodoPorOrgao(dataInicial, dataFinal, orgao);
+		}
+
 		criador.comDados(dados);
 		
 		return  Arrays.asList( criador.cria() ); 	
