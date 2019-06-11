@@ -26,6 +26,18 @@ public class LancamentoDao implements Serializable {
 		return new ArrayList<>();
 	}
 	
+	@Transactional
+	public void remover(Date dataInicial, Date dataFinal){
+		
+		em.createNativeQuery(" delete from " + 
+						"  public.lancamento " + 
+						"where " + 
+						"  cast( public.lancamento.data_lancamento as date) between :dataInicial and :dataFinal")
+				.setParameter("dataInicial", dataInicial)
+				.setParameter("dataFinal", dataFinal)
+				.executeUpdate();
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Object[]> orgaosQueMaisConsumiran(Date dataInicial, Date dataFinal){
@@ -50,7 +62,7 @@ public class LancamentoDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> consumoPorOrgao(Date dataInicial, Date dataFinal, String orgao){
+	public List<Object[]> consumoPorOrgaos(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		return em.createNativeQuery(" select" + 
 									"   public.lancamento.orgao," + 
@@ -59,7 +71,7 @@ public class LancamentoDao implements Serializable {
 									"   public.lancamento" + 
 									" where" + 
 									"   cast( public.lancamento.data_lancamento  as date) between :dataInicial and :dataFinal " +
-									"   and public.lancamento.orgao = :orgao " +
+									"   and public.lancamento.orgao in :orgaos " +
 									" group by" + 
 									"   public.lancamento.orgao" + 
 									" order by" + 
@@ -68,7 +80,7 @@ public class LancamentoDao implements Serializable {
 									"   5")
 				.setParameter("dataInicial", dataInicial)
 				.setParameter("dataFinal", dataFinal)
-				.setParameter("orgao", orgao)
+				.setParameter("orgaos", orgaos)
 				.getResultList();
 	}
 	
@@ -94,7 +106,7 @@ public class LancamentoDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> totalConsumidoNoPeriodoPorOrgao(Date dataInicial, Date dataFinal, String orgao){
+	public List<Object[]> totalConsumidoNoPeriodoPorOrgao(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		return em.createNativeQuery("	select " + 
 										"  cast( extract( month from public.lancamento.data_lancamento) as int)as mes, " + 
@@ -103,14 +115,14 @@ public class LancamentoDao implements Serializable {
 										"  public.lancamento " + 
 										"where " + 
 										"  public.lancamento.data_lancamento between :dataInicial and :dataFinal " + 
-										"  and public.lancamento.orgao = :orgao " + 
+										"  and public.lancamento.orgao in :orgao " + 
 										"group by " + 
 										"  extract( month from public.lancamento.data_lancamento) " + 
 										"order by" + 
 										"  1")
 				.setParameter("dataInicial", dataInicial)
 				.setParameter("dataFinal", dataFinal)
-				.setParameter("orgao", orgao)
+				.setParameter("orgao", orgaos)
 				.getResultList();
 	}
 	

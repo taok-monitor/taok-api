@@ -1,6 +1,7 @@
 package br.com.taok.service;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,6 +47,12 @@ public class LancamentoService implements Serializable {
 			contador++;
 		}
 		System.out.println("Salva");
+	}
+	
+	@Transactional
+	public void remover( Date dataInicial, Date dataFinal ) throws ServiceException {
+
+		dao.remover(dataInicial, dataFinal);
 	}
 	
 	public List<Lancamento> obtemTodos(){

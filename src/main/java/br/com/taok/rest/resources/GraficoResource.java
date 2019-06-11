@@ -29,7 +29,7 @@ public class GraficoResource {
 	@Path("/{mesAnoInicial}/{mesAnoFinal}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response index(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal, @QueryParam("orgao")String orgao ) {        
+    public Response index(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal, @QueryParam("orgao")List<String> orgaos ) {        
     	
 		Integer mesInicial = Integer.parseInt( mesAnoInicial.substring(0,2) );
 		Integer anoInicial = Integer.parseInt( mesAnoInicial.substring(2,6) );
@@ -40,14 +40,14 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal), orgao );
+    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
     	return Response.ok( graficos ).build();
     }
 	
 	@Path("/ano/{mesAnoInicial}/{mesAnoFinal}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response processoAnual(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal,  @QueryParam("orgao")String orgao ) {        
+    public Response processoAnual(@PathParam("mesAnoInicial") String mesAnoInicial, @PathParam("mesAnoFinal") String mesAnoFinal,  @QueryParam("orgao")List<String> orgaos ) {        
     	
 		Integer mesInicial = Integer.parseInt( mesAnoInicial.substring(0,2) );
 		Integer anoInicial = Integer.parseInt( mesAnoInicial.substring(2,6) );
@@ -58,7 +58,7 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal), orgao );
+    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
     	return Response.ok( graficos ).build();
     }
 }

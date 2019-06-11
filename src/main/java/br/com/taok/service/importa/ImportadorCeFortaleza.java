@@ -11,6 +11,7 @@ import br.com.taok.model.Lancamento;
 import br.com.taok.service.LancamentoBuilder;
 import br.com.taok.service.LancamentoService;
 import br.com.taok.service.conector.ConectorAPI;
+import br.com.taok.util.Util;
 
 public class ImportadorCeFortaleza implements Importador {
 
@@ -24,15 +25,15 @@ public class ImportadorCeFortaleza implements Importador {
 
 		for(int mes =1; mes <=12; mes++) {
 			
-			LocalDate dataInicial = LocalDate.of(2018, mes, 1);
+			LocalDate dataInicial = LocalDate.of(2019, mes, 1);
 			LocalDate dataFinal;
 			
 			if( mes == 12 ) {
 			
-				dataFinal = LocalDate.of(2018, mes, 31);
+				dataFinal = LocalDate.of(2019, mes, 31);
 			}else {
 				
-				dataFinal = LocalDate.of(2018, mes+1, 1).minusDays(1);
+				dataFinal = LocalDate.of(2019, mes+1, 1).minusDays(1);
 			}
 			
 			String diaInicial = dataInicial.getDayOfMonth() < 10 ? "0"+dataInicial.getDayOfMonth(): ""+dataInicial.getDayOfMonth();
@@ -49,6 +50,7 @@ public class ImportadorCeFortaleza implements Importador {
 				List<String[]> dados = ConectorAPI.conecta(url);
 				List<Lancamento> lancamentos = normalizaDados(dados);
 				
+				service.remover( Util.asDate(dataInicial), Util.asDate(dataFinal));
 				service.salva(lancamentos);
 				System.out.println("Importou Fortaleza");
 			} catch (Exception e) {
