@@ -51,6 +51,12 @@ public class ImportadorCeFortaleza implements Importador {
 				List<Lancamento> lancamentos = normalizaDados(dados);
 				
 				service.remover( Util.asDate(dataInicial), Util.asDate(dataFinal));
+				
+				if( mes == 6 ) {
+				
+					service.postagens(lancamentos);
+				}
+				
 				service.salva(lancamentos);
 				System.out.println("Importou Fortaleza");
 			} catch (Exception e) {

@@ -68,6 +68,12 @@
 	          <artifactId>postgresql</artifactId>
 	          <version>9.3-1102-jdbc41</version>
            </dependency>
+           
+           <dependency>
+    <groupId>com.restfb</groupId>
+    <artifactId>restfb</artifactId>
+    <version>2.22.0</version>
+</dependency>
     </dependencies>
     <build>
         <plugins>
