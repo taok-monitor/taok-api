@@ -1,7 +1,7 @@
 # Taok Monitor
 Projeto simples que consome dados do Portal da transparência da Prefeitura de Fortaleza 
 
-## Porquê o projetos surgiu ?
+## Porquê o projeto surgiu ?
 Existe muito incentivo para que a população economize água,
 Mas será que os órgãos públicos também economizam? 
 
