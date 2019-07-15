@@ -5,7 +5,7 @@ import com.restfb.Parameter;
 import com.restfb.Version;
 import com.restfb.types.FacebookType;
 
-public class CriadorDePost {
+public class PostCreator {
 
 	public static void postar(String mensagem) {
 

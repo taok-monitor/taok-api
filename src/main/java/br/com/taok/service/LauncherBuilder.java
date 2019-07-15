@@ -5,43 +5,43 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import br.com.taok.model.Lancamento;
+import br.com.taok.model.Launcher;
 
-public class LancamentoBuilder {
+public class LauncherBuilder {
 
-	private Lancamento lancamento;
+	private Launcher lancamento;
 	
 	/**
 	 * 
-	 * Criar uma nova instancia de {@link Lancamento}
+	 * Criar uma nova instancia de {@link Launcher}
 	 * 
 	 * */
-	public LancamentoBuilder cria() {
+	public LauncherBuilder cria() {
 		
-		this.lancamento = new Lancamento();
+		this.lancamento = new Launcher();
 		
 		return this;
 	}
 	
-	public LancamentoBuilder comMunicipio(Integer municipio) {
+	public LauncherBuilder comMunicipio(Integer municipio) {
 		
 		this.lancamento.setMunicipio( municipio );
 		return this;
 	}
 	
-	public LancamentoBuilder comIdentificador(String identificador) {
+	public LauncherBuilder comIdentificador(String identificador) {
 		
 		this.lancamento.setIdentificador(identificador.replace("\"", ""));
 		return this;
 	}
 	
-	public LancamentoBuilder comOrgao(String orgao) {
+	public LauncherBuilder comOrgao(String orgao) {
 		
 		this.lancamento.setOrgao(orgao.replace("\"", ""));
 		return this;
 	}
 	
-	public LancamentoBuilder comData(String data, String padrao) {
+	public LauncherBuilder comData(String data, String padrao) {
 		
 		try {
 		
@@ -56,7 +56,7 @@ public class LancamentoBuilder {
 		}
 	}
 	
-	public LancamentoBuilder comValor(String valor) {
+	public LauncherBuilder comValor(String valor) {
 		
 		valor = valor.replace("\"", "").replace(".", "").replaceAll(",", ".");
 		
@@ -64,13 +64,13 @@ public class LancamentoBuilder {
 		return this;
 	}
 	
-	public LancamentoBuilder comCpfCnpjDoFavorecido(String cpfcnpj) {
+	public LauncherBuilder comCpfCnpjDoFavorecido(String cpfcnpj) {
 		
 		this.lancamento.setCpfcnpjFavorecido(cpfcnpj.replace("\"", ""));
 		return this;
 	}
 	
-	public LancamentoBuilder comNomeDoFavorecido(String nomeFavorecido) {
+	public LauncherBuilder comNomeDoFavorecido(String nomeFavorecido) {
 		
 		this.lancamento.setNomeFavorecido(nomeFavorecido.replace("\"", ""));
 		return this;
@@ -81,7 +81,7 @@ public class LancamentoBuilder {
 	 * 
 	 * Retorna a instancia criada no método <b>cria()</b>
 	 * */
-	public Lancamento agora() {
+	public Launcher agora() {
 		
 		return this.lancamento;
 	}

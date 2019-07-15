@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Grafico implements Serializable {
+public class Line implements Serializable {
 
 	/**
 	 * 
@@ -15,7 +15,7 @@ public class Grafico implements Serializable {
 	private List<String> labels;
 	private List<BigDecimal> valores;
 
-	public Grafico(String titulo, List<String> labels, List<BigDecimal> valores) {
+	public Line(String titulo, List<String> labels, List<BigDecimal> valores) {
 		this.titulo = titulo;
 		this.labels = labels;
 		this.valores = valores;

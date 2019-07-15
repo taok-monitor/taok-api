@@ -6,14 +6,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.taok.exception.importa.ImportadorException;
-import br.com.taok.model.Lancamento;
-import br.com.taok.service.LancamentoBuilder;
+import br.com.taok.exception.importa.ImportationException;
+import br.com.taok.model.Launcher;
+import br.com.taok.service.LauncherBuilder;
 import br.com.taok.service.LancamentoService;
 import br.com.taok.service.conector.ConectorAPI;
 import br.com.taok.util.Util;
 
-public class ImportadorCeFortaleza implements Importador {
+public class CeFortalezaImporter implements Importer {
 
 	@Inject
 	private LancamentoService service;
@@ -48,7 +48,7 @@ public class ImportadorCeFortaleza implements Importador {
 				
 				String url = URL_DEFAULT.replace(":datainicial", dataInicialFiltro).replace(":datafinal", dataFinalFiltro);
 				List<String[]> dados = ConectorAPI.conecta(url);
-				List<Lancamento> lancamentos = normalizaDados(dados);
+				List<Launcher> lancamentos = normalizaDados(dados);
 				
 				service.remover( Util.asDate(dataInicial), Util.asDate(dataFinal));
 				
@@ -61,16 +61,16 @@ public class ImportadorCeFortaleza implements Importador {
 				System.out.println("Importou Fortaleza");
 			} catch (Exception e) {
 
-				throw new ImportadorException("Problema para Importar: "+e.getMessage());
+				throw new ImportationException("Problema para Importar: "+e.getMessage());
 			}
 		}
 		
 
 	}
 	
-	private List<Lancamento> normalizaDados(List<String[]> dados ){
+	private List<Launcher> normalizaDados(List<String[]> dados ){
 	
-		List<Lancamento> retorno = new ArrayList<>();
+		List<Launcher> retorno = new ArrayList<>();
 
 		int contador = 0;
 		
@@ -78,7 +78,7 @@ public class ImportadorCeFortaleza implements Importador {
 			
 			if( contador > 3 ) {
 				
-				Lancamento lacamento = new LancamentoBuilder().cria()
+				Launcher lacamento = new LauncherBuilder().cria()
 						.comIdentificador(dado[1])
 						.comMunicipio(1)
 						.comOrgao(dado[5])

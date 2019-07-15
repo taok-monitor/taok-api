@@ -4,19 +4,19 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.taok.model.grafico.Grafico;
+import br.com.taok.model.grafico.Chart;
 
-public class CriadorDeGraficosBarra {
+public class ChartBarCreator {
 
 	private List<Object[]> dados = new ArrayList<>();
 
-	public CriadorDeGraficosBarra comDados(List<Object[]> dados) {
+	public ChartBarCreator comDados(List<Object[]> dados) {
 		this.dados = dados;
 		
 		return this;
 	}
 
-	public Grafico cria() {
+	public Chart cria() {
 		
 		List<String> labels = new ArrayList<>();
 		List<BigDecimal> valores = new ArrayList<>();
@@ -28,6 +28,6 @@ public class CriadorDeGraficosBarra {
 			labels.add(label);
 			valores.add(valor);
 		}
-		return new Grafico("Órgãos que mais consumiram", labels, valores);
+		return new Chart("Órgãos que mais consumiram", labels, valores);
 	}
 }

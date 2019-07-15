@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name="lancamento")
-public class Lancamento {
+public class Launcher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "historico_id_seq")
@@ -103,7 +103,7 @@ public class Lancamento {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Lancamento other = (Lancamento) obj;
+		Launcher other = (Launcher) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

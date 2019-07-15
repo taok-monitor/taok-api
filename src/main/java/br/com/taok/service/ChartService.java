@@ -8,17 +8,17 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
-import br.com.taok.dao.LancamentoDao;
-import br.com.taok.model.grafico.Grafico;
+import br.com.taok.dao.LauncherDao;
+import br.com.taok.model.grafico.Chart;
 
-public class GraficoService {
+public class ChartService {
 
 	@Inject
-	private LancamentoDao dao;
+	private LauncherDao dao;
 	
-	private CriadorDeGraficosBarra criador = new CriadorDeGraficosBarra();
+	private ChartBarCreator criador = new ChartBarCreator();
 	
-	public List<Grafico> criaGraficoDeConsumo(Date dataInicial, Date dataFinal, List<String> orgaos){
+	public List<Chart> criaGraficoDeConsumo(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		List<Object[]> orgaosQueMaisConsumiram = new ArrayList<>();
 		orgaos = orgaos.stream().filter( o -> o.trim().length() > 0 ).collect(Collectors.toList());
@@ -35,7 +35,7 @@ public class GraficoService {
 		return  Arrays.asList(criador.cria()); 	
 	}
 	
-	public List<Grafico> criaGraficoComTotais(Date dataInicial, Date dataFinal, List<String> orgaos){
+	public List<Chart> criaGraficoComTotais(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		List<Object[]> dados = new ArrayList<>();
 		orgaos = orgaos.stream().filter( o -> o.trim().length() > 0 ).collect(Collectors.toList());

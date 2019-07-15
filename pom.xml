@@ -9,7 +9,6 @@
 
     <name>taok-backend</name>
     <url>https://github.com/taok-monitor/taok-backend</url>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.jersey>2.17</version.jersey>
@@ -76,6 +75,7 @@
 </dependency>
     </dependencies>
     <build>
+       	<finalName>taok-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="municipio")
-public class Municipio implements Serializable {
+public class City implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -61,7 +61,7 @@ public class Municipio implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Municipio other = (Municipio) obj;
+		City other = (City) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

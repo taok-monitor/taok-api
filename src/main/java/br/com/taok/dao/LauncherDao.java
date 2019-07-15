@@ -8,18 +8,18 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import br.com.taok.model.Lancamento;
+import br.com.taok.model.Launcher;
 import br.com.taok.util.Transactional;
 import br.com.taok.util.Util;
 
-public class LancamentoDao implements Serializable {
+public class LauncherDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private EntityManager em;
 	
-	public List<Lancamento> listaPorFiltro(){
+	public List<Launcher> listaPorFiltro(){
 		
 		System.out.println("Retorna tudo");
 		

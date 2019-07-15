@@ -2,12 +2,12 @@ package br.com.taok.model.grafico;
 
 import java.util.List;
 
-public class LinhaBuilder {
+public class LineBuilder {
 
 	private String titulo;
 	private List<Object[]> valores;
 
-	public LinhaBuilder(String titulo, List<Object[]> valores) {
+	public LineBuilder(String titulo, List<Object[]> valores) {
 		this.titulo = titulo;
 		this.valores = valores;
 	}

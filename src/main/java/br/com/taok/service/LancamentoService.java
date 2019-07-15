@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import br.com.taok.dao.LancamentoDao;
+import br.com.taok.dao.LauncherDao;
 import br.com.taok.exception.ServiceException;
-import br.com.taok.model.Lancamento;
-import br.com.taok.post.CriadorDePost;
+import br.com.taok.model.Launcher;
+import br.com.taok.post.PostCreator;
 import br.com.taok.util.Transactional;
 
 public class LancamentoService implements Serializable {
@@ -23,16 +23,16 @@ public class LancamentoService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private LancamentoDao dao;
+	private LauncherDao dao;
 	
 	@Inject
 	private EntityManager em;
 	
 	@Transactional
-	public void salva(List<Lancamento> lancamentos) throws ServiceException {
+	public void salva(List<Launcher> lancamentos) throws ServiceException {
 
 		int contador = 0;
-		for(Lancamento lancamento : lancamentos  ) {
+		for(Launcher lancamento : lancamentos  ) {
 			
 			em.createNativeQuery("insert into public.lancamento(id_municipio, identificador, orgao, data_lancamento, valor, cpfcnpj_favorecido, nome_favorecido)values( ?,?,?,?,?,?,? )")
 			.setParameter(1, lancamento.getMunicipio())
@@ -61,14 +61,14 @@ public class LancamentoService implements Serializable {
 		dao.remover(dataInicial, dataFinal);
 	}
 	
-	public List<Lancamento> obtemTodos(){
+	public List<Launcher> obtemTodos(){
 		
 		return dao.listaPorFiltro();
 	}
 
-	public void postagens(List<Lancamento> lancamentos) {
+	public void postagens(List<Launcher> lancamentos) {
 
-		Map<String, List<Lancamento>> agrupamentoPorOrgao = lancamentos.stream().collect(Collectors.groupingBy( Lancamento::getOrgao ));
+		Map<String, List<Launcher>> agrupamentoPorOrgao = lancamentos.stream().collect(Collectors.groupingBy( Launcher::getOrgao ));
 		Map<String, BigDecimal> agrupamentoValorTotal = new HashMap<>();
 
 		BigDecimal maiorValor = BigDecimal.ZERO;
@@ -93,6 +93,6 @@ public class LancamentoService implements Serializable {
 		String mensagem = "Olá, gostaria de Informar a todos o Órgão Municipal de fortaleza que pagou o maior valor a CAGECE, conheça o: "+maiorOrgao
 				+" Pagou "+NumberFormat.getCurrencyInstance().format(maiorValor)+" ";
 
-		CriadorDePost.postar(mensagem);
+		PostCreator.postar(mensagem);
 	}
 }

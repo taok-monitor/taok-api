@@ -13,18 +13,18 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.taok.model.grafico.Grafico;
+import br.com.taok.model.grafico.Chart;
 import br.com.taok.rest.conf.ControllerRest;
-import br.com.taok.service.GraficoService;
+import br.com.taok.service.ChartService;
 import br.com.taok.util.Util;
 
 
 @Path("/inicial")
 @ControllerRest
-public class GraficoResource {
+public class ChartResource {
 
 	@Inject
-	private GraficoService service;
+	private ChartService service;
 	
 	@Path("/{mesAnoInicial}/{mesAnoFinal}")
     @GET
@@ -40,7 +40,7 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
+    	List<Chart> graficos = service.criaGraficoDeConsumo( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
     	return Response.ok( graficos ).build();
     }
 	
@@ -58,7 +58,7 @@ public class GraficoResource {
 		LocalDate dataInicial = LocalDate.of(anoInicial, mesInicial , 1);
 		LocalDate dataFinal = LocalDate.now().withYear(anoFinal).withMonth(mesFinal).with(TemporalAdjusters.lastDayOfMonth());
 		
-    	List<Grafico> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
+    	List<Chart> graficos = service.criaGraficoComTotais( Util.asDate(dataInicial), Util.asDate(dataFinal), orgaos );
     	return Response.ok( graficos ).build();
     }
 }

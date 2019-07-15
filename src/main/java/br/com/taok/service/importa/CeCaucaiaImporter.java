@@ -1,8 +1,8 @@
 package br.com.taok.service.importa;
 
-import br.com.taok.service.importa.Importador;
+import br.com.taok.service.importa.Importer;
 
-public class ImportadorCeCaucaia implements Importador {
+public class CeCaucaiaImporter implements Importer {
 
 	@Override
 	public void importa() {

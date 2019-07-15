@@ -1,27 +1,28 @@
 package br.com.taok.rest.resources;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.taok.dao.MunicipioDao;
+import br.com.taok.carga.DataLoad;
 import br.com.taok.rest.conf.ControllerRest;
 
 
-@Path("/municipios")
+@Path("/cargas")
 @ControllerRest
-public class MunicipioResource {
+public class LoadResource {
 
 	@Inject
-	private MunicipioDao municipioDao;
+	private DataLoad atualizador;
 	
-    @GET
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response municios() {        
+    public Response carregar() {        
      
-    	return Response.ok( municipioDao.obtemTodosOsMunicipios() ).build();
+    	atualizador.atualiza();
+    	return Response.ok( "ok" ).build();
     }
 }
