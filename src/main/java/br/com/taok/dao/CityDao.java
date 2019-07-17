@@ -15,16 +15,16 @@ public class CityDao implements Serializable {
 	@Inject
 	private EntityManager manager;
 	
-	public List<City> obtemTodosOsMunicipios(){
+	public List<City> getAllCitys(){
 
 		
-		return manager.createQuery("from Municipio",City.class)
+		return manager.createQuery("from City",City.class)
 				.getResultList();
 	}
 	
-	public City obterMunicipioPorId(Integer id){
+	public City getSingleCityById(Integer id){
 		
-		return manager.createQuery("from Municipio m where m.id = :id ",City.class)
+		return manager.createQuery("from City m where m.id = :id ",City.class)
 				.setParameter("id", id)
 				.getSingleResult();
 	}

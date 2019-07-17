@@ -1,10 +1,10 @@
-package br.com.taok.service.importa;
+package br.com.taok.service.importation;
 
 import org.junit.Test;
 
-import br.com.taok.exception.importa.ImportationException;
-import br.com.taok.service.importa.Importer;
-import br.com.taok.service.importa.CeFortalezaImporter;
+import br.com.taok.exception.importation.ImportationException;
+import br.com.taok.service.importation.CeFortalezaImporter;
+import br.com.taok.service.importation.Importer;
 
 public class ImporterTest {
 

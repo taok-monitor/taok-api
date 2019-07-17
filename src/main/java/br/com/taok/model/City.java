@@ -22,7 +22,8 @@ public class City implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	private String descricao;
+	@Column(name = "descricao")
+	private String description;
 	
 	private String uf;
 	
@@ -33,11 +34,11 @@ public class City implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getUf() {
 		return uf;

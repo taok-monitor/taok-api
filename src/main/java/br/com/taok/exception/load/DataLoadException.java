@@ -1,4 +1,4 @@
-package br.com.taok.exception.carga;
+package br.com.taok.exception.load;
 
 public class DataLoadException extends RuntimeException {
 

@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.taok.carga.DataLoad;
+import br.com.taok.load.DataLoad;
 import br.com.taok.rest.conf.ControllerRest;
 
 

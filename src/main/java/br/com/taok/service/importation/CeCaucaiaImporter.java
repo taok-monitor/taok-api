@@ -1,6 +1,6 @@
-package br.com.taok.service.importa;
+package br.com.taok.service.importation;
 
-import br.com.taok.service.importa.Importer;
+import br.com.taok.service.importation.Importer;
 
 public class CeCaucaiaImporter implements Importer {
 

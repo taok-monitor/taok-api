@@ -7,7 +7,7 @@ import java.util.Date;
 
 import br.com.taok.model.Launcher;
 
-public class LauncherBuilder {
+public class LaunchBuilder {
 
 	private Launcher lancamento;
 	
@@ -16,32 +16,32 @@ public class LauncherBuilder {
 	 * Criar uma nova instancia de {@link Launcher}
 	 * 
 	 * */
-	public LauncherBuilder cria() {
+	public LaunchBuilder cria() {
 		
 		this.lancamento = new Launcher();
 		
 		return this;
 	}
 	
-	public LauncherBuilder comMunicipio(Integer municipio) {
+	public LaunchBuilder comMunicipio(Integer municipio) {
 		
 		this.lancamento.setMunicipio( municipio );
 		return this;
 	}
 	
-	public LauncherBuilder comIdentificador(String identificador) {
+	public LaunchBuilder comIdentificador(String identificador) {
 		
 		this.lancamento.setIdentificador(identificador.replace("\"", ""));
 		return this;
 	}
 	
-	public LauncherBuilder comOrgao(String orgao) {
+	public LaunchBuilder comOrgao(String orgao) {
 		
 		this.lancamento.setOrgao(orgao.replace("\"", ""));
 		return this;
 	}
 	
-	public LauncherBuilder comData(String data, String padrao) {
+	public LaunchBuilder comData(String data, String padrao) {
 		
 		try {
 		
@@ -56,7 +56,7 @@ public class LauncherBuilder {
 		}
 	}
 	
-	public LauncherBuilder comValor(String valor) {
+	public LaunchBuilder comValor(String valor) {
 		
 		valor = valor.replace("\"", "").replace(".", "").replaceAll(",", ".");
 		
@@ -64,13 +64,13 @@ public class LauncherBuilder {
 		return this;
 	}
 	
-	public LauncherBuilder comCpfCnpjDoFavorecido(String cpfcnpj) {
+	public LaunchBuilder comCpfCnpjDoFavorecido(String cpfcnpj) {
 		
 		this.lancamento.setCpfcnpjFavorecido(cpfcnpj.replace("\"", ""));
 		return this;
 	}
 	
-	public LauncherBuilder comNomeDoFavorecido(String nomeFavorecido) {
+	public LaunchBuilder comNomeDoFavorecido(String nomeFavorecido) {
 		
 		this.lancamento.setNomeFavorecido(nomeFavorecido.replace("\"", ""));
 		return this;

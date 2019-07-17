@@ -13,7 +13,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.taok.model.grafico.Chart;
+import br.com.taok.model.chart.Chart;
 import br.com.taok.rest.conf.ControllerRest;
 import br.com.taok.service.ChartService;
 import br.com.taok.util.Util;

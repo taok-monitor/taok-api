@@ -1,33 +1,24 @@
 package br.com.taok.dao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import br.com.taok.model.Launcher;
 import br.com.taok.util.Transactional;
 import br.com.taok.util.Util;
 
-public class LauncherDao implements Serializable {
+public class LaunchDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private EntityManager em;
-	
-	public List<Launcher> listaPorFiltro(){
 		
-		System.out.println("Retorna tudo");
-		
-		return new ArrayList<>();
-	}
-	
 	@Transactional
-	public void remover(Date dataInicial, Date dataFinal){
+	public void remove(Date dataInicial, Date dataFinal){
 		
 		em.createNativeQuery(" delete from " + 
 						"  public.lancamento " + 
@@ -40,7 +31,7 @@ public class LauncherDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> orgaosQueMaisConsumiran(Date dataInicial, Date dataFinal){
+	public List<Object[]> largestConsumers(Date dataInicial, Date dataFinal){
 		
 		return em.createNativeQuery(" select" + 
 									"   public.lancamento.orgao," + 
@@ -62,7 +53,7 @@ public class LauncherDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> consumoPorOrgaos(Date dataInicial, Date dataFinal, List<String> orgaos){
+	public List<Object[]> consuptionByPublicCompanys(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		return em.createNativeQuery(" select" + 
 									"   public.lancamento.orgao," + 
@@ -86,7 +77,7 @@ public class LauncherDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> totalConsumidoNoPeriodo(Date dataInicial, Date dataFinal){
+	public List<Object[]> totalConsumedInPeriod(Date dataInicial, Date dataFinal){
 		
 		return em.createNativeQuery("	select " + 
 										"  cast( extract( month from public.lancamento.data_lancamento) as int)as mes, " + 
@@ -106,7 +97,7 @@ public class LauncherDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> totalConsumidoNoPeriodoPorOrgao(Date dataInicial, Date dataFinal, List<String> orgaos){
+	public List<Object[]> totalConsumedInPeriodByPublicCompanys(Date dataInicial, Date dataFinal, List<String> orgaos){
 		
 		return em.createNativeQuery("	select " + 
 										"  cast( extract( month from public.lancamento.data_lancamento) as int)as mes, " + 
@@ -128,7 +119,7 @@ public class LauncherDao implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Object[]> consumoPorMes(Date data){
+	public List<Object[]> consuptionByMonth(Date data){
 		
 		return em.createNativeQuery("select " + 
 				"  cast( extract( month from public.lancamento.data_lancamento ) as int)||'-'||cast( extract( year from public.lancamento.data_lancamento ) as int) as mes_importacao, " + 

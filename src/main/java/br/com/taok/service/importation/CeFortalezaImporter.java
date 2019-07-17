@@ -1,4 +1,4 @@
-package br.com.taok.service.importa;
+package br.com.taok.service.importation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,17 +6,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.taok.exception.importa.ImportationException;
+import br.com.taok.exception.importation.ImportationException;
 import br.com.taok.model.Launcher;
-import br.com.taok.service.LauncherBuilder;
-import br.com.taok.service.LancamentoService;
+import br.com.taok.service.LaunchBuilder;
+import br.com.taok.service.LaunchService;
 import br.com.taok.service.conector.ConectorAPI;
 import br.com.taok.util.Util;
 
 public class CeFortalezaImporter implements Importer {
 
 	@Inject
-	private LancamentoService service;
+	private LaunchService service;
 	
 	private final String URL_DEFAULT = "https://transparencia.fortaleza.ce.gov.br/index.php/despesa/exibirResultConsultaPeriodoCSV/Companhia+De+Agua+E+Esgoto+Do+Ceara-Cagece/P/:datainicial/:datafinal/0/2019/RGVzcGVzYXMgZGEgUHJlZmVpdHVyYSBkZSBGb3J0YWxlemEgZGUgMDEvMDEvMjAxOSBhIDMxLzAxLzIwMTkgLSBGYXNlIGRlIFBhZ2FtZW50bw%3D%3D";
 	
@@ -78,7 +78,7 @@ public class CeFortalezaImporter implements Importer {
 			
 			if( contador > 3 ) {
 				
-				Launcher lacamento = new LauncherBuilder().cria()
+				Launcher lacamento = new LaunchBuilder().cria()
 						.comIdentificador(dado[1])
 						.comMunicipio(1)
 						.comOrgao(dado[5])

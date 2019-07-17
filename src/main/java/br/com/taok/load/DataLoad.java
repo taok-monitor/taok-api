@@ -1,6 +1,6 @@
-package br.com.taok.carga;
+package br.com.taok.load;
 
-import br.com.taok.exception.carga.DataLoadException;
+import br.com.taok.exception.load.DataLoadException;
 
 public interface DataLoad {
 

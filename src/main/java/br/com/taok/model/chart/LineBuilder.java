@@ -1,4 +1,4 @@
-package br.com.taok.model.grafico;
+package br.com.taok.model.chart;
 
 import java.util.List;
 

@@ -11,17 +11,17 @@ import br.com.taok.dao.CityDao;
 import br.com.taok.rest.conf.ControllerRest;
 
 
-@Path("/municipios")
+@Path("/citys")
 @ControllerRest
 public class CityResource {
 
 	@Inject
-	private CityDao municipioDao;
+	private CityDao cityDao;
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response municios() {        
+    public Response citys() {        
      
-    	return Response.ok( municipioDao.obtemTodosOsMunicipios() ).build();
+    	return Response.ok( cityDao.getAllCitys() ).build();
     }
 }

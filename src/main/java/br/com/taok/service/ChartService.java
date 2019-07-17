@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
-import br.com.taok.dao.LauncherDao;
-import br.com.taok.model.grafico.Chart;
+import br.com.taok.dao.LaunchDao;
+import br.com.taok.model.chart.Chart;
 
 public class ChartService {
 
 	@Inject
-	private LauncherDao dao;
+	private LaunchDao dao;
 	
 	private ChartBarCreator criador = new ChartBarCreator();
 	
@@ -25,10 +25,10 @@ public class ChartService {
 		
 		if( orgaos.size() == 0  ) {
 		
-			orgaosQueMaisConsumiram = dao.orgaosQueMaisConsumiran(dataInicial, dataFinal);
+			orgaosQueMaisConsumiram = dao.largestConsumers(dataInicial, dataFinal);
 		}else {
 			
-			orgaosQueMaisConsumiram = dao.consumoPorOrgaos(dataInicial, dataFinal, orgaos);
+			orgaosQueMaisConsumiram = dao.consuptionByPublicCompanys(dataInicial, dataFinal, orgaos);
 		}
 		
 		criador.comDados(orgaosQueMaisConsumiram);
@@ -43,10 +43,10 @@ public class ChartService {
 		if( orgaos.size() == 0  ) {
 			
 		
-			dados = dao.totalConsumidoNoPeriodo(dataInicial, dataFinal);
+			dados = dao.totalConsumedInPeriod(dataInicial, dataFinal);
 		}else {
 			
-			dados = dao.totalConsumidoNoPeriodoPorOrgao(dataInicial, dataFinal, orgaos);
+			dados = dao.totalConsumedInPeriodByPublicCompanys(dataInicial, dataFinal, orgaos);
 		}
 
 		criador.comDados(dados);

@@ -1,4 +1,4 @@
-package br.com.taok.exception.importa;
+package br.com.taok.exception.importation;
 
 public class ImportationException extends RuntimeException {
 

@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import br.com.taok.dao.LauncherDao;
+import br.com.taok.dao.LaunchDao;
 import br.com.taok.exception.ServiceException;
 import br.com.taok.model.Launcher;
 import br.com.taok.post.PostCreator;
 import br.com.taok.util.Transactional;
 
-public class LancamentoService implements Serializable {
+public class LaunchService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private LauncherDao dao;
+	private LaunchDao dao;
 	
 	@Inject
 	private EntityManager em;
@@ -58,12 +58,7 @@ public class LancamentoService implements Serializable {
 	@Transactional
 	public void remover( Date dataInicial, Date dataFinal ) throws ServiceException {
 
-		dao.remover(dataInicial, dataFinal);
-	}
-	
-	public List<Launcher> obtemTodos(){
-		
-		return dao.listaPorFiltro();
+		dao.remove(dataInicial, dataFinal);
 	}
 
 	public void postagens(List<Launcher> lancamentos) {
