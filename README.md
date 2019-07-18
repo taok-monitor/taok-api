@@ -1,3 +1,7 @@
+PT_BR
+
+---
+
 # Taok Monitor
 Projeto simples que consome dados do Portal da transparência da Prefeitura de Fortaleza 
 
@@ -18,3 +22,13 @@ Projeto dividido em [taok-front](https://github.com/taok-monitor/) e [taok-api](
 - CDI
 - TOMCAT
 - PostgreSQL
+
+Olha nossa [wiki](https://github.com/taok-monitor/taok-backend/wiki)
+
+---
+
+EN_US
+
+---
+
+translate to English
