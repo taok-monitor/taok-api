@@ -23,6 +23,17 @@ Projeto dividido em [taok-front](https://github.com/taok-monitor/) e [taok-api](
 - TOMCAT
 - PostgreSQL
 
+## Banco de dados
+
+Para executar a plataforma e necessário existir um banco PostgreSQL com isso vamos iniciando o postgresql usando docker:
+
+> $ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+depois basta:
+- criar um banco
+- alterar o arquivo `persistence.xml` informado os dados de acesso.
+- alterar o arquivo `persistence.xml` descomentando a flag `<property name="hibernate.hbm2ddl.auto" value="update" />`.
+
 Olha nossa [wiki](https://github.com/taok-monitor/taok-backend/wiki)
 
 ---
