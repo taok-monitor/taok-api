@@ -21,54 +21,54 @@ public class CeFortalezaImporter implements Importer {
 	private final String URL_DEFAULT = "https://transparencia.fortaleza.ce.gov.br/index.php/despesa/exibirResultConsultaPeriodoCSV/Companhia+De+Agua+E+Esgoto+Do+Ceara-Cagece/P/:datainicial/:datafinal/0/2019/RGVzcGVzYXMgZGEgUHJlZmVpdHVyYSBkZSBGb3J0YWxlemEgZGUgMDEvMDEvMjAxOSBhIDMxLzAxLzIwMTkgLSBGYXNlIGRlIFBhZ2FtZW50bw%3D%3D";
 	
 	@Override
-	public void importa() {
+	public void makeImport() {
 
-		for(int mes =1; mes <=12; mes++) {
+		for(int month =1; month <=12; month++) {
 			
-			LocalDate dataInicial = LocalDate.of(2019, mes, 1);
-			LocalDate dataFinal;
+			LocalDate startDate = LocalDate.of(2019, month, 1);
+			LocalDate endDate;
 			
-			if( mes == 12 ) {
+			if( month == 12 ) {
 			
-				dataFinal = LocalDate.of(2019, mes, 31);
+				endDate = LocalDate.of(2019, month, 31);
 			}else {
 				
-				dataFinal = LocalDate.of(2019, mes+1, 1).minusDays(1);
+				endDate = LocalDate.of(2019, month+1, 1).minusDays(1);
 			}
 			
-			String diaInicial = dataInicial.getDayOfMonth() < 10 ? "0"+dataInicial.getDayOfMonth(): ""+dataInicial.getDayOfMonth();
-			String mesInicial = dataInicial.getMonthValue()<10 ? "0"+dataInicial.getMonthValue(): ""+dataInicial.getMonthValue();
-			String dataInicialFiltro = diaInicial+mesInicial+""+dataInicial.getYear();
+			String diaInicial = startDate.getDayOfMonth() < 10 ? "0"+startDate.getDayOfMonth(): ""+startDate.getDayOfMonth();
+			String mesInicial = startDate.getMonthValue()<10 ? "0"+startDate.getMonthValue(): ""+startDate.getMonthValue();
+			String dataInicialFiltro = diaInicial+mesInicial+""+startDate.getYear();
 
-			String diaFinal = dataFinal.getDayOfMonth() < 10 ? "0"+dataFinal.getDayOfMonth(): ""+dataFinal.getDayOfMonth();
-			String mesFinal = dataFinal.getMonthValue()<10 ? "0"+dataFinal.getMonthValue(): ""+dataFinal.getMonthValue();
-			String dataFinalFiltro = diaFinal+mesFinal+""+dataFinal.getYear();
+			String diaFinal = endDate.getDayOfMonth() < 10 ? "0"+endDate.getDayOfMonth(): ""+endDate.getDayOfMonth();
+			String mesFinal = endDate.getMonthValue()<10 ? "0"+endDate.getMonthValue(): ""+endDate.getMonthValue();
+			String dataFinalFiltro = diaFinal+mesFinal+""+endDate.getYear();
 			
 			try {
 				
 				String url = URL_DEFAULT.replace(":datainicial", dataInicialFiltro).replace(":datafinal", dataFinalFiltro);
-				List<String[]> dados = ConectorAPI.conecta(url);
-				List<Launcher> lancamentos = normalizaDados(dados);
+				List<String[]> data = ConectorAPI.conecta(url);
+				List<Launcher> launchers = normalizeData(data);
 				
-				service.remover( Util.asDate(dataInicial), Util.asDate(dataFinal));
+				service.remover( Util.asDate(startDate), Util.asDate(endDate));
 				
-				if( mes == 6 ) {
+				if( month == 6 ) {
 				
-					service.postagens(lancamentos);
+					service.postagens(launchers);
 				}
 				
-				service.salva(lancamentos);
-				System.out.println("Importou Fortaleza");
+				service.save(launchers);
+				System.out.println("Fortaleza/CE Improted");
 			} catch (Exception e) {
 
-				throw new ImportationException("Problema para Importar: "+e.getMessage());
+				throw new ImportationException("Importation form Fortaleza/CE, Failed: "+e.getMessage());
 			}
 		}
 		
 
 	}
 	
-	private List<Launcher> normalizaDados(List<String[]> dados ){
+	private List<Launcher> normalizeData(List<String[]> dados ){
 	
 		List<Launcher> retorno = new ArrayList<>();
 

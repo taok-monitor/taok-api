@@ -18,7 +18,7 @@ public class DataLoadDefault implements DataLoad {
 		
 		for (Importer importador : importadoresLazy) {
 
-			importador.importa();
+			importador.makeImport();
 		}
 	}
 }
