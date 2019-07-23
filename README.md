@@ -50,8 +50,7 @@ There is a lot of government incentive for the population to save water, but do 
 Let's try answer this question with **TaOk Monitor**
 
 ## What is the source of the data?
-Data obtained from the transparency portal of Fortaleza City Hall in the category of [Expenses] 
-(https://transparencia.fortaleza.ce.gov.br/index.php/despesa/index), all data is from **PAYMENTS** 
+Data obtained from the transparency portal of Fortaleza City Hall in the category of [Expenses](https://transparencia.fortaleza.ce.gov.br/index.php/despesa/index), all data is from **PAYMENTS** 
 
 ## Project structure
 The project is organized into [taok-front](https://github.com/taok-monitor/) and [taok-api](https://github.com/taok-monitor/taok-backend).
