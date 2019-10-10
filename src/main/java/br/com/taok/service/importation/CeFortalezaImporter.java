@@ -52,11 +52,6 @@ public class CeFortalezaImporter implements Importer {
 				
 				service.remover( Util.asDate(startDate), Util.asDate(endDate));
 				
-				if( month == 6 ) {
-				
-					service.postagens(launchers);
-				}
-				
 				service.save(launchers);
 				System.out.println("Fortaleza/CE Improted");
 			} catch (Exception e) {
@@ -64,8 +59,6 @@ public class CeFortalezaImporter implements Importer {
 				throw new ImportationException("Importation form Fortaleza/CE, Failed: "+e.getMessage());
 			}
 		}
-		
-
 	}
 	
 	private List<Launcher> normalizeData(List<String[]> dados ){
