@@ -22,7 +22,7 @@ public class LoadResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response carregar() {        
      
-    	atualizador.atualiza();
+    	atualizador.update();
     	return Response.ok( "ok" ).build();
     }
 }

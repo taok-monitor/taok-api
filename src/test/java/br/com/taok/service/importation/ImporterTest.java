@@ -12,6 +12,6 @@ public class ImporterTest {
 	public void deveRetornarExcecao() {
 		
 		Importer importador = new CeFortalezaImporter();
-		importador.importa();
+		importador.makeImport();
 	}
 }

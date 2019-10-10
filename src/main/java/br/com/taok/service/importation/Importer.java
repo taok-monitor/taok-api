@@ -4,5 +4,5 @@ import br.com.taok.exception.importation.ImportationException;
 
 public interface Importer {
 
-	public void importa() throws ImportationException;
+	public void makeImport() throws ImportationException;
 }

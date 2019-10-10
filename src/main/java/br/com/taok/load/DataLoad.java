@@ -4,5 +4,5 @@ import br.com.taok.exception.load.DataLoadException;
 
 public interface DataLoad {
 
-	public void atualiza() throws DataLoadException;
+	public void update() throws DataLoadException;
 }

@@ -29,7 +29,7 @@ public class LaunchService implements Serializable {
 	private EntityManager em;
 	
 	@Transactional
-	public void salva(List<Launcher> lancamentos) throws ServiceException {
+	public void save(List<Launcher> lancamentos) throws ServiceException {
 
 		int contador = 0;
 		for(Launcher lancamento : lancamentos  ) {
