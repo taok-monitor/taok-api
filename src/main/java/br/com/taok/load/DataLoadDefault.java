@@ -14,11 +14,11 @@ public class DataLoadDefault implements DataLoad {
 	private Instance<Importer> importadoresLazy;
 	
 	@Override
-	public void atualiza() throws DataLoadException {
+	public void update() throws DataLoadException {
 		
-		for (Importer importador : importadoresLazy) {
+		for (Importer importer : importadoresLazy) {
 
-			importador.makeImport();
+			importer.makeImport();
 		}
 	}
 }
